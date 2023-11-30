@@ -7,12 +7,12 @@ function Category() {
     const[products, setProducts]=useState([]);
     const {categoryId} = useParams()
 
+  
     useEffect(()=>{
     axios.get(`https://dummyjson.com/products/category/${categoryId}`)
-    .then((resp)=> setProducts(resp.data.results))
+    .then((resp)=> setProducts(resp.data.products))
     .catch((err)=> console.log(err))
     },[categoryId])
-
     
     return (
     <div>

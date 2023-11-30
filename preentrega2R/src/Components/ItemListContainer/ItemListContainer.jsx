@@ -1,17 +1,18 @@
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 
 const ItemListContainer = ({products}) => {
   return (
     <div >
     {products.map((product)=>{
-      console.log(product)
       return(
-        <Card key={product.name}
-         style={{ width: '18rem', margin: 20, height: "200px" }}>
+        <Card key={product.title}
+         style={{ width: '18rem', margin: 20, height: "300px" }}>
+          <Link to={`/item/${product.id}`}> <Card.Img variant="top" src={product.thumbnail} /> </Link>
              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Img variant="top" src="ndjsnjsdjj" />
+                <Card.Title>{product.title}</Card.Title>
+              
              
               </Card.Body>
             </Card>

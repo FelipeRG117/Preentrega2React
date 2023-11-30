@@ -17,7 +17,6 @@ axios.get('https://dummyjson.com/products/categories')
 .catch(err => console.log(err))
 },[])
 
-console.log(categories)
   return (
     <Navbar  expand="lg" className="bg-body-tertiary">
       <Container className='Container'>
@@ -25,10 +24,7 @@ console.log(categories)
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Comida</Nav.Link>
-            <Nav.Link href="#link">Complementos</Nav.Link>
-
-            <NavDropdown title="Opciones" id="basic-nav-dropdown">
+            <NavDropdown title="Categorias" id="basic-nav-dropdown">
 {
   categories.map((category, index)=>{
     return(

@@ -11,7 +11,6 @@ axios.get('https://dummyjson.com/products/?limit=10')
 .catch((err)=> console.log(err))
 },[])
 
-console.log(products)
   return (
     <div> <ItemListContainer products={products}/> </div>
   )  
