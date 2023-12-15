@@ -7,7 +7,7 @@ const Home = () => {
 
 useEffect(()=>{
   const db = getFirestore()
- const collectionRef = collection(db, "products")
+ const collectionRef = collection(db, "asd")
  getDocs(collectionRef)
  .then((res)=>{
   console.log(res)
