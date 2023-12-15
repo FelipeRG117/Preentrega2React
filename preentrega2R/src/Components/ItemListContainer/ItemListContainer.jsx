@@ -12,7 +12,7 @@ const ItemListContainer = ({products}) => {
           <Link to={`/item/${product.id}`}> <Card.Img variant="top" src={product.thumbnail} /> </Link>
              <Card.Body>
                 <Card.Title>{product.title}</Card.Title>
-              
+              <p>{product.description}</p>
              
               </Card.Body>
             </Card>

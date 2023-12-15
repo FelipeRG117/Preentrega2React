@@ -5,17 +5,31 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Carwidget from '../CarWidget/Carwidget';
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import axios from "axios";
+import {getDocs, getFirestore, collection, getDoc, doc,query, where} from 'firebase/firestore'
 
 
 function NavBar() {
 const [categories, setCategories] = useState([])
 
 useEffect(()=>{
-axios.get('https://dummyjson.com/products/categories')
-.then(res =>setCategories(res.data))
-.catch(err => console.log(err))
-},[])
+  const db = getFirestore();
+  const productsCollection = collection(db, "asd");
+
+  getDocs(productsCollection)
+    .then((res) => {
+      const uniqueCategories = new Set();
+      res.docs.forEach((doc) => {
+        const productData = doc.data();
+        if (productData.category) {
+          uniqueCategories.add(productData.category);
+        }
+      });
+      const categoriesArray = Array.from(uniqueCategories);
+      setCategories(categoriesArray);
+    })
+    .catch((err) => console.error(err));
+}, []);
+
 
   return (
     <Navbar  expand="lg" className="bg-body-tertiary">
