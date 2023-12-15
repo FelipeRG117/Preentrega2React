@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
 import { MainRouter } from './router/MainRouter';
+import { CartProvider } from './Context';
 
 
 function App() {
@@ -8,7 +9,10 @@ function App() {
   return (
     <>
       <div>
-         <MainRouter/>
+        <CartProvider>
+        <MainRouter/>
+        </CartProvider>
+         
       </div>
       
     </>

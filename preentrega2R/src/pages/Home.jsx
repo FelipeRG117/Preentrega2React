@@ -1,14 +1,25 @@
 import ItemListContainer from '../Components/ItemListContainer/ItemListContainer'
 import { useEffect, useState } from 'react';
-import axios from "axios";
+import {getDocs, getFirestore, collection} from 'firebase/firestore'
 
 const Home = () => {
  const[products, setProducts]=useState([]);
 
 useEffect(()=>{
-axios.get('https://dummyjson.com/products/?limit=10')
-.then((resp)=> setProducts(resp.data.products))
-.catch((err)=> console.log(err))
+  const db = getFirestore()
+ const collectionRef = collection(db, "products")
+ getDocs(collectionRef)
+ .then((res)=>{
+  console.log(res)
+  const data = res.docs.map((doc)=>({
+   
+    id: doc.id,
+    ...doc.data()
+    
+  }))
+  setProducts(data)
+  console.log(data)
+ })
 },[])
 
   return (
